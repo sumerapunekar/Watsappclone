@@ -6,9 +6,10 @@ import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import KeyboardDoubleArrowDownIcon from '@mui/icons-material/KeyboardDoubleArrowDown';
 import SearchIcon from '@mui/icons-material/Search';
 import Contacts from './Contacts';
+import RefreshIcon from '@mui/icons-material/Refresh';
 
 
-function ContactList(props) {
+function ContactList({user,logout,...props}) {
  const Array = [{name:"Irfan",img:"https://pps.whatsapp.net/v/t61.24694-24/305814467_140632885097825_6270874185595100738_n.jpg?stp=dst-jpg_s96x96&ccb=11-4&oh=01_AdRrFUziYp5xYKRUd7vfS6UtbHrA-Li9-ABcvYzhVj2HOQ&oe=6398A6FD"},
  {name:"Arbaz",img:"https://pps.whatsapp.net/v/t61.24694-24/202177080_340975597701817_967367736069419974_n.jpg?stp=dst-jpg_s96x96&ccb=11-4&oh=01_AdQ7qutEwXdDRYeRBecDHXUgt9bpNIgfzf9fZHu8eB1Qaw&oe=63989894"},
  {name:"Arfat",img:"https://pps.whatsapp.net/v/t61.24694-24/312280018_169906322326594_541453286877171405_n.jpg?stp=dst-jpg_s96x96&ccb=11-4&oh=01_AdT3AL7EgIKRAUbEJp-7Ei-wOwUA64jlsBk5Q5cO3ccwzQ&oe=639896B0"},
@@ -26,10 +27,11 @@ function XYZ(x){
     <div className='h-screen col-span-1 bg-slate-800 border-r border-slate-400 '>
       <div className='flex justify-between bg-gray-600 items-center px-4 py-2'>
         <img className="rounded-full h-9 w-9" src="https://pps.whatsapp.net/v/t61.24694-24/290854331_755582042150294_1901257243929918428_n.jpg?stp=dst-jpg_s96x96&ccb=11-4&oh=01_AdTZj8UjMvIIlx9_rJbZ7VQEhxyIneNzvtNbDpLERt-0NA&oe=63989DFD"></img>
-        <div className='flex space-x-4 text-white'>
+        <div className='flex items-center space-x-4 text-white'>
           <GroupsIcon fontSize='inherit'/>
           <CachedIcon fontSize='inherit'/>
           <AddIcon fontSize='inherit'/>
+          <button onClick={()=>logout()} className='flex items-center'><RefreshIcon  fontSize='inherit'/></button>
           <MoreHorizIcon fontSize='inherit'/>
 
         </div>
