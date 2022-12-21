@@ -12,12 +12,12 @@ import Firebase from './Firebase'
 import { signInWithPopup } from "firebase/auth";
 import app from './Firebase'
 import { setUserId } from 'firebase/analytics'
-
+import Loader from './Components/Loader'
 
 
 function App() {
 const [user,setUser] = useState(false)
-
+const [load,setLoad] =useState(true)
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
 
@@ -54,15 +54,21 @@ useEffect(onAuthStateChanged(auth, (u) => {
 }),[user])
 
 
-async function signOut(){
-  await signOut(auth).then(() => {}).catch(() => {})
+async function SignOut(){
+  await signOut(auth).then((er) => {console.log(er)}).catch((errr) => {console.log(errr)})
 }
+
+setTimeout(()=>{
+  setLoad(false)
+  },3000)
+  
+  if (load) return <Loader/>
 
   return (
 // // //   //    className="h-screen w-screen bg-slate-900 py-32">
   <div>
        {
-        user? <Homescreen user={user} logout={signOut}/> :<Login login={signUp}/>
+        user? <Homescreen user={user} logout={SignOut}/> :<Login login={signUp}/>
        }
     </div>
   )

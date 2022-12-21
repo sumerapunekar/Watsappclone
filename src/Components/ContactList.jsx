@@ -19,14 +19,14 @@ function ContactList({user,logout,...props}) {
  {name:"Priya",img:"https://pps.whatsapp.net/v/t61.24694-24/305592966_481023603738680_4717535719581381666_n.jpg?stp=dst-jpg_s96x96&ccb=11-4&oh=01_AdTIg5rxjShYOAJcDb6PaHNMa5s4qudIxIWtpM8VfxRo_g&oe=639890DD"},
  {name:"Ejaz",img:"https://pps.whatsapp.net/v/t61.24694-24/298328542_766611371246745_4042993338047187675_n.jpg?stp=dst-jpg_s96x96&ccb=11-4&oh=01_AdSRMKwhVdk2UovpcXbGGvmaRnqMJZ-m0rIxbeHnBzDG_A&oe=6398AEFD"}
 ]
-console.log(props)
+console.log(props,logout,user)
 function XYZ(x){
   props.setContact(x)
 }
   return (
     <div className='h-screen col-span-1 bg-slate-800 border-r border-slate-400 '>
       <div className='flex justify-between bg-gray-600 items-center px-4 py-2'>
-        <img className="rounded-full h-9 w-9" src="https://pps.whatsapp.net/v/t61.24694-24/290854331_755582042150294_1901257243929918428_n.jpg?stp=dst-jpg_s96x96&ccb=11-4&oh=01_AdTZj8UjMvIIlx9_rJbZ7VQEhxyIneNzvtNbDpLERt-0NA&oe=63989DFD"></img>
+        <img className="rounded-full h-9 w-9" src={user?.photoURL}></img>
         <div className='flex items-center space-x-4 text-white'>
           <GroupsIcon fontSize='inherit'/>
           <CachedIcon fontSize='inherit'/>
