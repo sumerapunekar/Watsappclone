@@ -13,6 +13,7 @@ import { signInWithPopup } from "firebase/auth";
 import app from './Firebase'
 import { setUserId } from 'firebase/analytics'
 import Loader from './Components/Loader'
+import firebase from './Firebase'
 
 
 function App() {
@@ -32,7 +33,6 @@ async function signUp(){
     console.log(error)
   });
 }
-
 // async function XY(){
 // let value = new Promise (function (A,B){
 //    A("700")
@@ -64,11 +64,19 @@ setTimeout(()=>{
   
   if (load) return <Loader/>
 
+
+  
+  
+  
+
+  
+
+
   return (
 // // //   //    className="h-screen w-screen bg-slate-900 py-32">
   <div>
        {
-        user? <Homescreen user={user} logout={SignOut}/> :<Login login={signUp}/>
+        user? <Homescreen user={user} logout={SignOut}/> :<Login login={signUp} />
        }
     </div>
   )
