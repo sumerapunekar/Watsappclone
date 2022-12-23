@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import InsertEmoticonIcon from '@mui/icons-material/InsertEmoticon';
 import AttachFileIcon from '@mui/icons-material/AttachFile';
 import MicIcon from '@mui/icons-material/Mic';
-
+ 
 function ChatBottom(props) {
   const schema = {
     uid : "irfan",
