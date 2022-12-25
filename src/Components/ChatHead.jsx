@@ -11,9 +11,9 @@ function ChatHead(props) {
         <div className='sticky top-0 bg-white'>
 <div className='flex justify-between bg-gray-600 items-center py-2 px-4'>
         <div className='flex space-x-4'>
-        <img className="rounded-full h-9 w-9" src={props.p2?.img}></img>
+        <img className="rounded-full h-9 w-9" src={props.p2?.photoURL}></img>
         <div className='py-1 items-center'>
-          <p className='text-lg text-gray-300 font-semibold leading-3'>{props.p2.name}</p>
+          <p className='text-lg text-gray-300 font-semibold leading-3'>{props.p2.displayName}</p>
           <p className='text-xs text-gray-300 font-light'>Online</p>
         </div>
         

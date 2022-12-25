@@ -2,7 +2,7 @@ import React from 'react'
 
 
 function Contacts(props) {
-    console.log(props)
+    // console.log(props)
   return (
     <div className='flex justify-between px-2 py-2 items-center border-y border-slate-700 cursor-pointer hover:font-bold '>
          <div className='flex space-x-2'>

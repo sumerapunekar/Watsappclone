@@ -14,21 +14,37 @@ import app from './Firebase'
 import { setUserId } from 'firebase/analytics'
 import Loader from './Components/Loader'
 import firebase from './Firebase'
-
+import {getFirestore,doc, getDoc, setDoc} from "firebase/firestore"
 
 function App() {
 const [user,setUser] = useState(false)
 const [load,setLoad] =useState(true)
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
+const db = getFirestore(app);
+
+useEffect(()=>{
+if(!user) return ;
+checkNewLogin();
+},[user])
+ 
+async function checkNewLogin(){
+  const docRef = doc(db, "users", user?.uid);
+  const docSnap = await getDoc(docRef);
+
+if (!docSnap.exists()) {
+  await setDoc(doc(db, "users", user?.uid), user);
+  
+} 
+}
 
 async function signUp(){
 
   await signInWithPopup(auth, provider)
   .then((result) => {
-    
-    const user = result.user;
-    setUser(user)
+    const {displayName,email,photoURL,uid} = result.user;
+    setUser({"displayName":displayName,"email":email,"photoURL":photoURL,"uid":uid});
+    console.log(displayName,email,photoURL,uid)
   }).catch((error) => {
     console.log(error)
   });
@@ -47,11 +63,12 @@ async function signUp(){
 
 useEffect(onAuthStateChanged(auth, (u) => {
   if (u) {
-    setUser(u)
+    const {displayName,email,photoURL,uid} = u
+    setUser({"displayName":displayName,"email":email,"photoURL":photoURL,"uid":uid});
   } else {
     setUser(null)
   }
-}),[user])
+}),[])
 
 
 async function SignOut(){
@@ -60,7 +77,7 @@ async function SignOut(){
 
 setTimeout(()=>{
   setLoad(false)
-  },3000)
+  },2000)
   
   if (load) return <Loader/>
 
@@ -76,7 +93,7 @@ setTimeout(()=>{
 // // //   //    className="h-screen w-screen bg-slate-900 py-32">
   <div>
        {
-        user? <Homescreen user={user} logout={SignOut}/> :<Login login={signUp} />
+        user? <Homescreen user={user} db={db} logout={SignOut}/> :<Login login={signUp} />
        }
     </div>
   )
