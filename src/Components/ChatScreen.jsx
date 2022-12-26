@@ -5,7 +5,7 @@ import Chat from './Chat';
 import ChatBottom from './ChatBottom'; 
 import useState from "react";
 
-function ChatScreen(props) {
+function ChatScreen({db,user,...props}) {
 // const [messageArray,setMessageArray] = useState([])
 
   return (
@@ -16,11 +16,11 @@ function ChatScreen(props) {
        </div>
 
        <div className='bg-[url("https://images.unsplash.com/photo-1533134486753-c833f0ed4866?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80")] bg-cover bg-center bg-no-repeat h-screen overflow-x-hidden '>
-        <Chat/>
+        <Chat user={user} db={db}/>
        </div>
 
        <div>
-       <ChatBottom/>
+       <ChatBottom db={db} user={user} />
        </div>
       
       

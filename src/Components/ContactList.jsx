@@ -42,7 +42,7 @@ setArray(temparr)
 function XYZ(x){
   props.setContact(x)
 }
-console.log(user)
+
   return (
     <div className='h-screen col-span-1 bg-slate-800 border-r border-slate-400 '>
       <div className='flex justify-between bg-gray-600 items-center px-4 py-2'>

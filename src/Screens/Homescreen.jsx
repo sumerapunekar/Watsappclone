@@ -15,7 +15,7 @@ function Homescreen({user,db,logout}) {
         <ContactList user={user} db={db} logout={logout} setContact = {setActive}/>
 
         {/* ChatScreen */}
-       { active ? <ChatScreen db={db} p1={active} /> :<div className='text-white text-5xl font-bold flex justify-center items-center col-span-3'>
+       { active ? <ChatScreen db={db} p1={active} user={user}/> :<div className='text-white text-5xl font-bold flex justify-center items-center col-span-3'>
         <p>Welcome</p></div> }
     </div>
   )
