@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import InsertEmoticonIcon from '@mui/icons-material/InsertEmoticon';
 import AttachFileIcon from '@mui/icons-material/AttachFile';
 import MicIcon from '@mui/icons-material/Mic';
-import { collection, addDoc } from "firebase/firestore"; 
+import { collection, addDoc,Timestamp } from "firebase/firestore"; 
 
 function ChatBottom({db,user,...props}) {
 
@@ -11,7 +11,8 @@ function ChatBottom({db,user,...props}) {
     myMessage : "",
     uid : user?.uid,
     img : user?.photoURL,
-    displayName : user?.displayName
+    displayName : user?.displayName,
+    timeST : Timestamp.fromDate(new Date())
     }
    
   const [message,setMessage] = useState(schema)
